@@ -1,11 +1,10 @@
 import React, { Suspense } from "react";
 import { ThemeProvider } from "styled-components";
-import { Main } from "./styled";
 import theme from "vars/theme";
 import Header from "layout/Header";
 import ClientLayout from "pages";
 import { BrowserRouter, Route } from "react-router-dom";
-const App = ({ fetchUserInfo }) => {
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

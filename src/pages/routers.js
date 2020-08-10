@@ -1,16 +1,11 @@
 
-import { patientList, creation } from './constants';
+import { todoList } from './constants';
 
 const routes = [
   {
-    path: '/patient-list',
+    path: '/',
     name: 'Danh sách người bệnh',
-    component: patientList,
-  },
-  {
-    path: '/config',
-    name: 'Config',
-    component: creation,
+    component: todoList,
   },
 ];
 

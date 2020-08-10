@@ -1,22 +1,14 @@
 import React, { Suspense } from "react";
 
-const Creation = React.lazy(() => import("./config"));
-const PatientList = React.lazy(() => import("./patientList"));
+const TodoList = React.lazy(() => import("./todoList"));
 
 
-export function creation(props) {
+
+
+export function todoList(props) {
   return (
     <Suspense fallback={<div>{"loading..."}</div>}>
-      <Creation {...props} />
-    </Suspense>
-  );
-}
-
-
-export function patientList(props) {
-  return (
-    <Suspense fallback={<div>{"loading..."}</div>}>
-      <PatientList {...props} />
+      <TodoList {...props} />
     </Suspense>
   );
 }
