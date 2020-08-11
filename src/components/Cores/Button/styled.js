@@ -3,58 +3,11 @@ import styled from 'styled-components';
 const combineType = (type, theme) => {
   switch (type) {
     case 'primary':
-      return { bg: theme.greenDark, color: theme.white, keyColor: theme.gray2 };
-    case 'light-blue':
+      return { bg: theme.bluePrimary, color: theme.whitePrimary };
+    case 'danger':
       return {
-        bg: theme.whitePrimary,
-        color: theme.blue,
-      };
-    case 'dark-blue':
-      return { bg: theme.gray, color: theme.blue, keyColor: theme.shortKey };
-    case 'light-pink':
-      return {
-        bg: theme.whitePrimary,
-        color: theme.pink,
-      };
-    case 'light-orange':
-      return {
-        bg: theme.whitePrimary,
-        color: theme.orange,
-      };
-    case 'light-green':
-      return {
-        bg: theme.whitePrimary,
-        color: theme.greenDark,
-      };
-    case 'dark-green':
-      return { bg: theme.gray, color: theme.green, keyColor: theme.shortKey };
-    case 'light-dark':
-      return {
-        bg: theme.whiteSecondary,
-        color: theme.black,
-      };
-    case 'gray-dark':
-      return {
-        bg: theme.grayMain,
-        color: theme.black,
-      };
-    case 'blue-light':
-      return {
-        bg: theme.blue2,
+        bg: theme.redPrimary,
         color: theme.whitePrimary,
-        keyColor: theme.gray2,
-      };
-    case 'bluedark-light':
-      return {
-        bg: theme.blue3,
-        color: theme.whitePrimary,
-        keyColor: theme.gray2,
-      };
-    case 'dark-light':
-      return {
-        bg: theme.gray,
-        color: theme.whitePrimary,
-        keyColor: theme.gray2,
       };
     case 'transparent':
       return {
@@ -63,7 +16,7 @@ const combineType = (type, theme) => {
         keyColor: theme.greenDark,
       };
     default:
-      return { bg: theme.greenDark, color: theme.white, keyColor: theme.gray2 };
+      return { bg: theme.greenDark, color: theme.whitePrimary};
   }
 };
 
@@ -80,6 +33,7 @@ const combineSize = size => {
 
 const Main = styled('button')`
   width: ${({ width }) => width};
+  cursor: pointer;
   & .btn-content {
     display: flex;
     align-items: center;
@@ -106,7 +60,8 @@ const Main = styled('button')`
   color: ${props => combineType(props.btnType, props.theme).color};
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.greenMedium1};
+    border: none;
+    outline: none;
   }
 `;
 

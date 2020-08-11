@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Main = styled('div')`
 	border-radius: 4px;
 	background-color: ${props => props.theme['white-blur']};
-	
+	box-shadow: 0 0 10px #d9d9d9;
 	& .c-card-title {
 		text-transform: uppercase;
 		font-size: 14px;

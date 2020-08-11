@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import Selects from 'react-select';
 import { Main} from './styled';
 const SelectCustom = ({
   options,
@@ -16,16 +15,13 @@ const SelectCustom = ({
   // const input = (options && options.find(item => item.value === value)) || null;
 
   return (
-    <Main>
-      <select id="ddlProducts" name="ddProducts" value={value}>
+      <Main  value={value} onChange={handleChange} className="form-control">
         {options && options.map((item, index) => {
           return (
             <option value={item.value}>{item.label}</option>
           )
         })}
-      </select>
-    </Main>
-
+      </Main>
   );
 };
 

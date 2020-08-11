@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { Main } from './styled';
 
-const Button = ({ props }) => {
+const Button = ( props ) => {
 	const { icon, children, htmlType, onClick, className, type, events, ...other } = props;
 
 	return (
@@ -42,14 +42,7 @@ Button.propTypes = {
 	size: T.oneOf(['normal', 'large']),
 	type: T.oneOf([
 		'primary',
-		'light-blue',
-		'light-pink',
-		'light-dark',
-		'light-orange',
-		'light-green',
-		'blue-light',
-		'dark-blue',
-		'dark-green',
+		'danger',
 		'transparent',
 	]),
 };

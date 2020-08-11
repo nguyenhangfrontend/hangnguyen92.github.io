@@ -1,11 +1,8 @@
 import React from 'react';
 import Button from './Main';
-import KeyEventWrapper from '../KeyEventWrapper';
 
 const ButtonWrap = props => {
   const {
-    keyCode,
-    controlKey,
     onClick,
     disabled,
     forwardRef,
