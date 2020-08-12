@@ -18,7 +18,7 @@ const SelectCustom = ({
       <Main  value={value} onChange={handleChange} className="form-control">
         {options && options.map((item, index) => {
           return (
-            <option value={item.value}>{item.label}</option>
+            <option key={index} value={item.value}>{item.label}</option>
           )
         })}
       </Main>

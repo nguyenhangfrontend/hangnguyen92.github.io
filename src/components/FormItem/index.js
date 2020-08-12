@@ -1,4 +1,4 @@
-import React, { memo, useState, useImperativeHandle } from 'react';
+import React, { memo, useState } from 'react';
 import { Main } from './styled';
 import T from 'prop-types';
 
@@ -88,4 +88,4 @@ FormItem.propTypes = {
   className: T.string,
 };
 
-export default memo(React.forwardRef(FormItem));
+export default memo(FormItem);

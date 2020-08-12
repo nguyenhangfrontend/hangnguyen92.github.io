@@ -1,29 +1,56 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from "react";
 import { Main } from "./styled";
-import { Card, Input, TextArea, DatePicker, SelectCustom, Button } from 'components/Cores';
+import { Card, Input, Checkbox, Button } from "components/Cores";
 import { levels } from "../../constants";
 import FormItem from "components/FormItem";
-const TodoList = ({ }) => {
+import NewTask from "../NewTask";
+const TodoList = ({}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState(false);
+  const toggle = (item) => {
+    setIsOpen(!isOpen);
+    setData(item)
+  }
 
+  // const formToBody = (form, todoItem) => {
+  //   const keys = Object.keys(form).filter(item => item !== 'birthday');
+  //   return keys.reduce((result, key) => ({
+  //     ...result,
+  //     [key]: todoItem[key] || form[key],
+  //   }), {});
+    
+  // };
   return (
-    <Main >
-      <Card>
-        <FormItem inputComponent={Input} placeholder="Add new task" />
-        <FormItem inputComponent={TextArea} label="Discription" />
-        <div className="container-divider">
-          <div className="col col50">
-            <FormItem inputComponent={DatePicker} label="Due date" />
+    <Main>
+      <FormItem inputComponent={Input} placeholder="Search" />
+      <div className="list-todo">
+        <div className="todo-item">
+          <div className="item-child">
+            <Checkbox
+              children={"Do home work"}
+              disabled={true}
+              checked={true}
+            />
+            <div className="action">
+              <Button
+                children={"Detail"}
+                type={"darkBlue"}
+                onClick={toggle}
+              />
+              <Button children={"Remove"} type={"danger"} />
+            </div>
           </div>
-          <div className="col col50">
-            <FormItem inputComponent={SelectCustom} label="Priority" options={levels}/>
-          </div>
+          {isOpen && (
+            <NewTask
+              showForm={toggle}
+              visible={isOpen}
+              data={data}
+            />
+          )}
         </div>
-        <div className="action">
-        <Button children={"Add new"} type={"primary"} />
-        </div>
-      </Card>
+      </div>
     </Main>
-  )
+  );
 };
 
-export default TodoList
+export default TodoList;

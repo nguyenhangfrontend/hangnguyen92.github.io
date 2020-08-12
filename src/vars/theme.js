@@ -5,6 +5,7 @@ const theme = {
 
   // Blue palette
   bluePrimary: '#08AAA8',
+  darkBlue: '#125872',
   whitePrimary: '#fff',
 
   transparent: 'transparent',

@@ -44,6 +44,7 @@ Button.propTypes = {
 		'primary',
 		'danger',
 		'transparent',
+		'darkBlue'
 	]),
 };
 

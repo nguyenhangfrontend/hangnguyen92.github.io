@@ -5,7 +5,6 @@ const ButtonWrap = props => {
   const {
     onClick,
     disabled,
-    forwardRef,
     ...other
   } = props;
 
@@ -17,7 +16,6 @@ const ButtonWrap = props => {
 
   return (
       <Button
-        ref={forwardRef}
         {...other}
         onClick={handleOnClick}
         disabled={disabled}

@@ -5,11 +5,11 @@ export const Main = styled.div`
 
   & .col40 {
     width: 40%;
-    padding: 15px;
+    padding: 12px;
   }
   & .col60 {
     width: 60%;
-    padding: 15px;
+    padding: 12px;
   }
 
 `

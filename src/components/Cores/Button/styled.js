@@ -9,6 +9,11 @@ const combineType = (type, theme) => {
         bg: theme.redPrimary,
         color: theme.whitePrimary,
       };
+    case 'darkBlue':
+      return {
+        bg: theme.darkBlue,
+        color: theme.whitePrimary,
+      };
     case 'transparent':
       return {
         bg: theme.transparent,

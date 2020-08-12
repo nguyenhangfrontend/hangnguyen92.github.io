@@ -17,8 +17,9 @@ const CheckBox = (props) => {
 
 	return (
 		<Main size={size} className={className}>
-			<input onChange={handleChange} type="checkbox" checked={checked} {...other} />
-			<div className={'check-box-label'}>{children}</div>
+			<input type="checkbox" {...other} checked={checked} onChange={handleChange} />
+			<span className="check-mark"></span>
+			<label className={'check-box-label'}>{children}</label>
 		</Main>
 	);
 
