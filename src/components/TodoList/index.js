@@ -1,28 +1,19 @@
 import React from "react";
-import {
-  Input,
-  TextArea,
-  DatePicker,
-  Checkbox,
-  SelectCustom,
-  Card,
-  Button,
-  formChange,
-  form,
-} from "components/Cores";
-import FormItem from "components/FormItem";
-import { levels } from "./constants";
+import NewTask from './components/NewTask';
+import TodoList from './components/TodoList';
+import {Main} from "./styled";
+
 const TodoListComp = () => {
   return (
-    <Card>
-      <Button children={"Add new"} type={"primary"} />
-      <Button children={"Remove"} type="danger" />
-      <FormItem inputComponent={DatePicker} placeholder="Add new task"/>
-      <FormItem inputComponent={Input} label="Description"/>
-      <FormItem inputComponent={TextArea} />
-      <Checkbox />
-      <FormItem inputComponent={SelectCustom} options={levels} label="Priority" />
-    </Card>
+    <Main className="main">
+      <div className="col40">
+        <NewTask/>
+      </div>
+      <div className="col60">
+      <TodoList/>
+      </div>
+      
+    </Main>
   );
 };
 

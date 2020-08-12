@@ -5,13 +5,13 @@ export const Main = styled.div`
   & .form-control {
     min-height: 32px;
     border-radius: 4px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding: 6px 10px;
     border-color: transparent;
     box-shadow: none;
     color: ${({theme }) => theme.darkPrimary};
     border: 1px solid ${({theme }) => theme.darkLight};
     width: 100%;
+    box-sizing: border-box;
     &:focus{
       outline: none;
       box-shadow: none;

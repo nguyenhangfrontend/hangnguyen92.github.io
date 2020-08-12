@@ -10,6 +10,7 @@ export const Main = styled("div")`
     border: 1px solid #ddd;
     width: 100%;
     padding: 0 10px;
+    box-sizing: border-box;
     &:focus{
       border-color: #ddd;
       outline: none;

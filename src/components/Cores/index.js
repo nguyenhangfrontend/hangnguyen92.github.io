@@ -1,6 +1,6 @@
 import Card from './Card';
 import Button from './Button';
-import Checkbox from './Checkbox';
+import Checkbox from './CheckBox';
 import Typography from './Typography';
 import DatePicker from './DatePicker';
 import SelectCustom from './SelectCustom';
