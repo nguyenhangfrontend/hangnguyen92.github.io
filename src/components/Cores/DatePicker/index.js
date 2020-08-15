@@ -7,11 +7,6 @@ import { Main } from "./styled";
 const DatePickerCustom = ({
   onChange,
   value,
-  placeholder,
-  label,
-  require,
-  theme,
-  disabled
 }) => {
   const [showChildren, setShowChildren] = useState(false);
 
@@ -26,8 +21,8 @@ const DatePickerCustom = ({
   return (
     <Main>
       <DatePicker
-        selected={value}
         onChange={handChange}
+        selected={value}
       >
         <i className="cal-icon"/>
       </DatePicker>
