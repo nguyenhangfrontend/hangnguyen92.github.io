@@ -1,8 +1,7 @@
 export const initialForm = {
-  id: null,
   taskName: "",
   taskDescription: "",
   dueDate: null,
-  priority: '',
+  priority: 'low',
   doHomeWork: false
 };

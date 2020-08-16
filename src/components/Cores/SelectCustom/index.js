@@ -9,19 +9,20 @@ const SelectCustom = ({
   ...other
 }) => {
   const handleChange = output => {
-    onChange(output ? output.value : '');
+    
+    onChange(output.target.value);
   };
 
   // const input = (options && options.find(item => item.value === value)) || null;
 
   return (
-      <Main  value={value} onChange={handleChange} className="form-control">
+      <select  value={value} onChange={handleChange} className="form-control">
         {options && options.map((item, index) => {
           return (
             <option key={index} value={item.value}>{item.label}</option>
           )
         })}
-      </Main>
+      </select>
   );
 };
 

@@ -8,6 +8,7 @@ const Main = styled('div')`
 		text-transform: uppercase;
 		font-size: 14px;
 		text-align: center;
+		font-weight: bold;
 	}
 	
 	& .card-head {

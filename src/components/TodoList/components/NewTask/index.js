@@ -17,11 +17,8 @@ const NewTask = ({ visible, data, changeList }) => {
   const [funcObj, setFuncObj] = useState(initialForm);
   const [idItem, setId] = useState(0);
   const [oldItemsLocal, setOldItems] = useState(JSON.parse(localStorage.getItem("LIST_TODO")) || []);
-  
 
-  // useEffect(()=> {
-  //   localStorage.setItem("LIST_TODO", []);
-  // }, [])
+
   useEffect(() => {
     const formChangeKeys = Object.keys(initialForm);
     const obj = formChangeKeys.reduce(
@@ -31,7 +28,7 @@ const NewTask = ({ visible, data, changeList }) => {
       }),
       {}
     );
-    console.log(obj.doHomeWork)
+
     setFuncObj(obj)
 
   }, [form]);
@@ -44,13 +41,9 @@ const NewTask = ({ visible, data, changeList }) => {
   }, [data])
 
   useEffect(()=> {
-
-    window.localStorage.setItem("LIST_TODO", JSON.stringify(oldItemsLocal));
     if(changeList)
       changeList(oldItemsLocal)
-      // setId(0)
   }, [oldItemsLocal])
-
 
   const setFormKey = (key) => (value) => {
   
@@ -64,17 +57,20 @@ const NewTask = ({ visible, data, changeList }) => {
   };
 
 
-  const onSubmit = async () => {
+  const onSubmit =  () => {
     if(data && data.id){
       let newArr = oldItemsLocal;
-      newArr[data.id] = form
+      newArr[data.index] = {...form, id: data.id}
+      console.log('newArr', newArr)
+      // console.log('form', form)
        setOldItems(newArr);
+       window.localStorage.setItem("LIST_TODO", JSON.stringify(newArr));
     }else {
       setId(idItem + 1)
       let formData = form
        formData["id"] = idItem + 1;
-       console.log('oldItemsLocal', oldItemsLocal)
-       await setOldItems([...oldItemsLocal, formData]);
+      setOldItems([...oldItemsLocal, formData]);
+      window.localStorage.setItem("LIST_TODO", JSON.stringify([...oldItemsLocal, formData]));
        setForm(initialForm)
     }
    
