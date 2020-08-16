@@ -1,24 +1,28 @@
 import React, { memo, useState, useEffect } from "react";
 import { Main } from "./styled";
-import { Card, Input, Checkbox, Button } from "components/Cores";
-import { levels } from "../../constants";
+import { Input, Checkbox, Button } from "components/Cores";
 import FormItem from "components/FormItem";
 import NewTask from "../NewTask";
-const TodoList = ({ listTodo }) => {
+const TodoList = ({ listTodo, changeList }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [idChecked, setIdChecked] = useState();
+  const [idRemove, setIdRemove] = useState();
   const [data, setData] = useState({});
   const [listLocal, setListLocal] = useState([])
   const toggle = (item, index) => {
-    console.log('item', item)
     setIsOpen(!isOpen);
     setData({ ...item, index })
   }
 
+
   useEffect(() => {
     const newList = listTodo.sort((a, b) => a.dueDate < b.dueDate ? -1 : 0);
     setListLocal(newList)
-  }, [listTodo,])
+  }, [listTodo])
 
+  const removeAllAction = () => {
+    setIdRemove(idChecked)
+  }
   const removeItem = (id) => {
     let newArr = []
     listLocal.forEach(element => {
@@ -31,20 +35,29 @@ const TodoList = ({ listTodo }) => {
     setListLocal(newArr)
     window.localStorage.setItem('LIST_TODO', JSON.stringify(newArr) || []);
   }
-  
+
   const handleChange = (value) => {
     const event = value.toLocaleLowerCase()
     let list = listTodo.sort((a, b) => a.dueDate < b.dueDate ? -1 : 0);
-    if(event){
-       list = (listLocal || []).filter(item => {
+    if (event) {
+      list = (listLocal || []).filter(item => {
         return (
           item.taskName.toLocaleLowerCase().includes(event)
         );
       });
     }
     setListLocal(list)
-    
-    
+
+  }
+
+  const changePriority = (e, item) => {
+   
+    if (e) {
+      setIdChecked(item.id)
+    } else {
+      setIdChecked(undefined)
+    }
+
   }
   return (
     <Main>
@@ -56,34 +69,55 @@ const TodoList = ({ listTodo }) => {
               <div className="item-child">
                 <Checkbox
                   children={item && item.taskName}
-                  disabled={true}
-                  checked={true}
+                  checked={idChecked === item.id}
+                  onChange={(e) => changePriority(e, item)}
                 />
-                <div className="action">
-                  <Button
-                    children={"Detail"}
-                    type={"darkBlue"}
-                    onClick={() => toggle(item, index)}
-                  />
-                  <Button children={"Remove"} onClick={() => removeItem(item && item.id)} type={"danger"} />
-                </div>
+                {idRemove !== item.id &&
+                  <div className="action">
+                    <Button
+                      children={"Detail"}
+                      type={"darkBlue"}
+                      onClick={() => toggle(item, index)}
+                    />
+                    <Button children={"Remove"} onClick={() => removeItem(item && item.id)} type={"danger"} />
+                  </div>
+                }
+
               </div>
+
               {item.id === data.id && (
                 <NewTask
                   showForm={toggle}
                   visible={isOpen}
+                  setVisible={toggle}
                   data={data}
+                  changeList={changeList}
                 />
               )}
+
             </div>
           )
         })
-
         }
+        {idChecked &&
+          <div className="todo-item bulk-action">
+            <div className="item-child">
+              <span>Bulk actions: </span>
+              <div className="action">
+                <Button
+                  children={"Done"}
+                  type={"darkBlue"}
+                />
+                <Button children={"Remove"} onClick={removeAllAction} type={"danger"} />
+              </div>
+            </div>
+          </div>
+        }
+
 
       </div>
     </Main>
   );
 };
 
-export default TodoList;
+export default memo(TodoList);

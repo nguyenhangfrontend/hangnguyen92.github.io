@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const Main = styled.div`
   height: ${props => props.visible? 'auto': 0};
-  overflow-y: ${props => props.visible? 'initial': 'hidden'};
+  visibility: ${props => props.visible? 'visible': 'visible'};
 & .container-divider{
   display: flex;
 

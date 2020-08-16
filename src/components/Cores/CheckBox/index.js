@@ -1,6 +1,5 @@
 import React from 'react';
 import T from 'prop-types';
-import CheckedWhiteIcon from 'resources/svg/checked-white.svg';
 import { Main } from './styled';
 
 const CheckBox = (props) => {
@@ -9,7 +8,7 @@ const CheckBox = (props) => {
 
 		const { onChange} = props;
 		if (onChange) {
-			onChange(e.target.value);
+			onChange(e.target.checked);
 		}
 	};
 

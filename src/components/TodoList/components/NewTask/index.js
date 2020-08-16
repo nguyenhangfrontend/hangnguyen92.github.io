@@ -2,7 +2,6 @@ import React, { memo, useEffect, useState } from "react";
 import { Main } from "./styled";
 import { initialForm } from './constants'
 import {
-  Card,
   Input,
   TextArea,
   DatePicker,
@@ -11,7 +10,7 @@ import {
 } from "components/Cores";
 import { levels } from "../../constants";
 import FormItem from "components/FormItem";
-const NewTask = ({ visible, data, changeList }) => {
+const NewTask = ({ visible, data, changeList, setVisible }) => {
 
   const [form, setForm] = useState(initialForm)
   const [funcObj, setFuncObj] = useState(initialForm);
@@ -57,14 +56,13 @@ const NewTask = ({ visible, data, changeList }) => {
   };
 
 
-  const onSubmit =  () => {
+  const onSubmit = () => {
     if(data && data.id){
       let newArr = oldItemsLocal;
       newArr[data.index] = {...form, id: data.id}
-      console.log('newArr', newArr)
-      // console.log('form', form)
-       setOldItems(newArr);
+       setOldItems([...newArr]);
        window.localStorage.setItem("LIST_TODO", JSON.stringify(newArr));
+       setVisible(false)
     }else {
       setId(idItem + 1)
       let formData = form

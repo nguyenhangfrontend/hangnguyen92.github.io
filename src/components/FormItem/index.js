@@ -1,13 +1,10 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Main } from './styled';
 import T from 'prop-types';
 
-const FormItem = (props, ref) => {
-  const [error, setError] = useState('');
+const FormItem = (props) => {
   const {
     label,
-    require,
-    requireAfter,
     value,
     placeholder,
     onChange,
@@ -18,7 +15,6 @@ const FormItem = (props, ref) => {
     options,
     className,
     disabled,
-    rules,
     selectAddress,
   } = props;
 

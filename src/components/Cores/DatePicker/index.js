@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,11 +8,8 @@ const DatePickerCustom = ({
   onChange,
   value,
 }) => {
-  const [showChildren, setShowChildren] = useState(false);
 
   const handChange = (date) => {
-
-    setShowChildren(true)
     onChange(date);
   };
 

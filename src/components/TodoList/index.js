@@ -1,10 +1,10 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, memo} from "react";
 import NewTask from "./components/NewTask";
 import TodoList from "./components/TodoList";
 import { Main } from "./styled";
 import { Card } from "components/Cores";
 
-const TodoListComp = () => {
+const TodoListComp = ({}) => {
   
   const [listLocal, setList] = useState([]);
 
@@ -21,11 +21,11 @@ const TodoListComp = () => {
       </div>
       <div className="col60">
         <Card title="List to do">
-          <TodoList listTodo={listLocal}/>
+          <TodoList listTodo={listLocal} changeList={changeList}/>
         </Card>
       </div>
     </Main>
   );
 };
 
-export default TodoListComp;
+export default memo(TodoListComp);

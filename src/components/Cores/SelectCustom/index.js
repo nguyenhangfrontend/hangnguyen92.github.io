@@ -1,12 +1,8 @@
 import React, { memo } from 'react';
-import { Main} from './styled';
 const SelectCustom = ({
   options,
   value,
   onChange,
-  placeholder,
-  disabled,
-  ...other
 }) => {
   const handleChange = output => {
     
